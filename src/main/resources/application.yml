@@ -1,0 +1,33 @@
+server:
+    port: 8080
+    address: 10.40.15.148
+
+spring:
+    main:
+      banner-mode: "console"
+    datasource:
+        url: jdbc:mysql://localhost:3306/test?autoReconnect=true&useSSL=false
+        username: root
+        password: 123456
+        driver-class-name: com.mysql.jdbc.Driver
+        type: com.alibaba.druid.pool.DruidDataSource
+        validationQuery: SELECT 1 FROM DUAL
+        initialSize: 1
+        minIdle: 1
+        maxActive: 20
+        maxWait: 60000
+        timeBetweenEvictionRunsMillis: 60000
+        poolPreparedStatements: false
+        minEvictableIdleTimeMillis : 30000
+        maxPoolPreparedStatementPerConnectionSize: 20
+        filters: stat,wall
+        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    jpa:
+      database: MYSQL
+      show-sql: true
+      generate-ddl: true
+      hibernate:
+        ddl-auto: none
+        dialect: org.hibernate.dialect.MySQL5Dialect
+logging:
+    level: info
